@@ -14,7 +14,7 @@ struct Relative
 	FurColour furColour;
 	char maleOrFemale;         // 'M' - male, 'F' - female.
 
-	int father;                  // Index of the father. -1 if it's unknown.
+	int father;                  // Index of the father (when in array). -1 if it's unknown.
 	int mother;                  // Index of the mother. -1 if it's unknown.
 	std::vector<int> children;   // Indexes of all direct children.
 };

@@ -193,6 +193,7 @@ std::vector<Relative> FamilyTree::sameColour(FurColour colour) const
 	return sameFurPets;
 }
 
+size_t FamilyTree::relativesCount() const { return fTree.size(); }
 const std::vector<Relative>& FamilyTree::getWholeTree() const
 {
 	return fTree;

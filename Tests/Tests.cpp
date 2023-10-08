@@ -12,8 +12,6 @@
 // even though project 'Tests' has a reference to project 'FamilyTree'.
 #include "../FamilyTree/source/FamilyTree.cpp"
 #include "../FamilyTree/source/Relative.cpp"
-#include "../FamilyTree/source/Relative.h"
-
 
 #pragma warning (disable : 4996)   // Disable 'strcpy() unsafe' warning.
 
@@ -21,6 +19,8 @@ using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
 namespace Tests
 {
+	// TO DO: add unit tests for 'Relative'.
+
 	TEST_CLASS(FamilyTreeTests)
 	{
 	public:
@@ -37,26 +37,26 @@ namespace Tests
 				  Why is a family tree always a DAG: because if it wasn't there would be someone who is a parent of themselves,
 				  which is a contradiction.
 			---------------------------------------------------------------------------------------------------------------
-				The graph where the edges are poiners to parents:
+				The graph where the edges are the pointers to parents:
 				  - 0 is the node of my pet.
 				  - the direction of all edges is from bottom to top.
 				  - if connected with an edge, a higher node is a parent of a lower node.
 				  - fathers are to the left and mothers are to the right.
 
-						4
-						|\       __--5
-						| \     /   /|
-						|  \	7	/ |
-						|   \	   1  |
-						 \   \   /   |
-						  6   \ /    |
-						   |   0     |
-						   |   /     /
-							\ /     /
-							 2     /
-							  \   /
-							   \ /
-								3
+		      4
+		      |\       __--5
+		      | \     /   /|
+		      |  \   7   / |
+		      |   \     1  |
+		       \   \   /   |
+		        6   \ /    |
+		        |    0     |
+		        |   /     /
+		         \ /     /
+		          2     /
+		           \   /
+		            \ /
+		             3
 
 				In this tree the parent relationships are as follows (father == F, mother == M, unknown == ?):
 				  - 0: F4, M1
@@ -74,7 +74,7 @@ namespace Tests
 				  - 0 is the node of my pet.
 				  - the direction of all edges is from top to bottom.
 				  - if connected with an edge a lower node is a child of a higher node.
-				This graph is the same as the previous, where just the direction of the edges is reversed (and it is also a DAG).
+				The graph is the same as the previous, where just the direction of the edges is reversed (and it is also a DAG).
 		*/
 		static std::vector<Relative> generateSampleTree()
 		{
@@ -191,6 +191,10 @@ namespace Tests
 			std::vector<Relative> ansBLACK{ originalTree[0], originalTree[1], originalTree[7]};
 			Assert::IsTrue(ansDARK_BROWN == testTree.sameColour(FurColour::DARK_BROWN));
 			Assert::IsTrue(ansBLACK == testTree.sameColour(FurColour::BLACK));
+		}
+		TEST_METHOD(relativesCountTest)
+		{
+			Assert::AreEqual(originalTree.size(), testTree.relativesCount());
 		}
 		TEST_METHOD(getWholeTree)
 		{
