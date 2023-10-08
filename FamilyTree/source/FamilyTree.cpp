@@ -92,19 +92,24 @@ std::vector<std::pair<Relative, unsigned>> FamilyTree::allChildren() const
 	std::vector<bool> visited(fTree.size());      // True if a node(pet) is already visited.
 
 	for (size_t i = 0; i < fTree.front().children.size(); ++i)  // Put all direct children in the queue.
-		Q.emplace(fTree.front().children[i], 1);   // Generation difference is one.
-
+	{
+		Q.emplace(fTree.front().children[i], 1);    // Generation difference is one.
+		visited[fTree.front().children[i]] = true;
+	}
+		
 	while (!Q.empty())
 	{
 		std::pair<unsigned, unsigned> current = Q.front();
 		Q.pop();
-		visited[current.first] = true;  // Mark current as visited.
 		descendants.push_back({ fTree[current.first], current.second });  // Put current in the final array.
 		
 		// Put children of current in queue.
 		for (size_t i = 0; i < fTree[current.first].children.size(); ++i)
 			if (!visited[fTree[current.first].children[i]])
+			{
 				Q.emplace(fTree[current.first].children[i], current.second + 1);
+				visited[fTree[current.first].children[i]] = true;
+			}
 	}
 	
 	return descendants;
@@ -134,21 +139,34 @@ std::vector<std::pair<Relative, unsigned>> FamilyTree::allParents() const
 	std::queue<std::pair<unsigned, unsigned>> Q;  // <index, genDiff>. Queue of the indexes of the pets and generation difference.
 	std::vector<bool> visited(fTree.size());      // True if a node(pet) is already visited.
 
+	// Put first parents in the queue.
+	if (fTree.front().father != -1)
+	{
+		Q.emplace(fTree.front().father, 1);
+		visited[fTree.front().father] = true;
+	}
+	if (fTree.front().mother != -1)
+	{
+		Q.emplace(fTree.front().mother, 1);
+		visited[fTree.front().mother] = true;
+	}
+
 	while (!Q.empty())
 	{
 		std::pair<unsigned, unsigned> current = Q.front();
 		Q.pop();
-		visited[current.first] = true;   // Mark current as visited.
 		predecessors.push_back({ fTree[current.first], current.second });  // Put current in the final array.
 
 		// Put parents of current in queue.
 		if (fTree[current.first].father != -1 && !visited[fTree[current.first].father])
 		{
 			Q.emplace(fTree[current.first].father, current.second + 1);
+			visited[fTree[current.first].father] = true;
 		}
 		if (fTree[current.first].mother != -1 && !visited[fTree[current.first].mother])
 		{
 			Q.emplace(fTree[current.first].mother, current.second + 1);
+			visited[fTree[current.first].mother] = true;
 		}
 	}
 
@@ -175,6 +193,10 @@ std::vector<Relative> FamilyTree::sameColour(FurColour colour) const
 	return sameFurPets;
 }
 
+const std::vector<Relative>& FamilyTree::getWholeTree() const
+{
+	return fTree;
+}
 
 /*
 	Reads a file of the following format:

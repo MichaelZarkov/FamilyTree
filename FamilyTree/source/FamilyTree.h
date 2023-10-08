@@ -19,6 +19,8 @@ public:
 	std::vector<Relative> sameAge(unsigned age) const;
 	std::vector<Relative> sameColour(FurColour colour) const;
 
+	const std::vector<Relative>& getWholeTree() const;
+
 private:
 	void readFromFile(const char* fileName);
 

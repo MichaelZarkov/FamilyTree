@@ -1,5 +1,19 @@
 
+#include <cstring>
 #include "Relative.h"
+
+
+bool operator==(const Relative& lhs, const Relative& rhs)
+{
+	return !strcmp(lhs.name, rhs.name) &&
+		lhs.animalType == rhs.animalType &&
+		lhs.age == rhs.age &&
+		lhs.furColour == rhs.furColour &&
+		lhs.maleOrFemale == rhs.maleOrFemale &&
+		lhs.father == rhs.father &&
+		lhs.mother == rhs.mother &&
+		lhs.children == rhs.children;
+}
 
 std::ifstream& operator>>(std::ifstream& file, Relative& rel)
 {

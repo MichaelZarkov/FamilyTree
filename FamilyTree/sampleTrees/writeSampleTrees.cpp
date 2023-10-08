@@ -6,7 +6,6 @@
 
 #pragma warning (disable : 4996)
 
-
 /*
 	This function generates and returns the following family tree as a vector:
 	Note: It is not actually a "tree" by definition. It is a DAG (directed acyclic graph).
@@ -88,10 +87,9 @@ std::vector<Relative> generateSampleTree()
 
 	return T;
 }
-
-void saveTreeToFile(const std::vector<Relative>& T)
+void saveTreeToFile(const std::vector<Relative>& T, const char* fileName)
 {
-	std::ofstream file("sampleTrees/familyTree.ftree", std::ios::binary);
+	std::ofstream file(fileName, std::ios::binary);
 	if (!file.is_open()) { throw "Cannot save family tree to file! Filepath if wrong!"; }
 
 	size_t relativesCount = T.size();
