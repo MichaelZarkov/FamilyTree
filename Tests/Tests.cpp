@@ -43,14 +43,14 @@ namespace Tests
 				  - if connected with an edge, a higher node is a parent of a lower node.
 				  - fathers are to the left and mothers are to the right.
 
-						 4
-						 |\       __--5
-						 | \     /   /|
-						 |  \	7	/ |
-						 |   \	   1  |
-						  \   \   /   |
-						   6   \ /    |
-						   |	0     |
+						4
+						|\       __--5
+						| \     /   /|
+						|  \	7	/ |
+						|   \	   1  |
+						 \   \   /   |
+						  6   \ /    |
+						   |   0     |
 						   |   /     /
 							\ /     /
 							 2     /
