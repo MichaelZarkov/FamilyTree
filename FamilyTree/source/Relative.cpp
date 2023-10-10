@@ -21,7 +21,7 @@ std::ifstream& operator>>(std::ifstream& file, Relative& rel)
 	if (!file.good())    { throw "Error reading from file!"; }
 
 	file.read((char*)&rel, sizeof(Relative) - sizeof(rel.children));  // Read relative without children vector.
-	size_t childrenCount;
+	size_t childrenCount = 0;
 	file.read((char*)&childrenCount, sizeof(childrenCount));
 	rel.children.resize(childrenCount);
 	if (childrenCount != 0)

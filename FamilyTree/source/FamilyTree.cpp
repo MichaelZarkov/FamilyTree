@@ -212,7 +212,7 @@ void FamilyTree::readFromFile(const char* fileName)
 	if (!file.is_open())
 		throw "Invalid file name! File doesn't exist!";
 
-	size_t relativeCount;
+	size_t relativeCount = 0;
 	file.read((char*)&relativeCount, sizeof(size_t));  // Read how many relatives.
 	if (relativeCount == 0) { throw "Family tree is empty! The family tree must have at least one relative!"; }
 	fTree.resize(relativeCount);

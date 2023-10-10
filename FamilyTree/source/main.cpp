@@ -1,11 +1,8 @@
 
 
-#include "FamilyTree.h"
+#include "Interface.h"
 
 int main()
 {
-	FamilyTree fTree("sampleTrees/familyTree.ftree");
-
-	fTree.allChildren();
-	fTree.allParents();
+	Interface("sampleTrees/familyTree.ftree");
 }

@@ -128,11 +128,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="source\FamilyTree.cpp" />
+    <ClCompile Include="source\Interface.cpp" />
     <ClCompile Include="source\main.cpp" />
     <ClCompile Include="source\Relative.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\FamilyTree.h" />
+    <ClInclude Include="source\Interface.h" />
     <ClInclude Include="source\Relative.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

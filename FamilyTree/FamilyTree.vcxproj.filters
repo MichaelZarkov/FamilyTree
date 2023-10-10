@@ -24,12 +24,18 @@
     <ClCompile Include="source\Relative.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="source\Interface.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\FamilyTree.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="source\Relative.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Interface.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
