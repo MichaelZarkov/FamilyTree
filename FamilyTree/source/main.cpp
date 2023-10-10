@@ -4,5 +4,5 @@
 
 int main()
 {
-	Interface("sampleTrees/familyTree.ftree");
+	Interface familyTree("sampleTrees/familyTree.ftree");
 }

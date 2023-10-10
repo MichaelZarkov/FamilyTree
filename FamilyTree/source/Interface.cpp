@@ -224,11 +224,28 @@ void Interface::printInvalidArg()
 }
 void Interface::printCmdInfo()
 {
+	const char cmdExplanation[][72]
+	{
+		" - info about my pet.",
+		" - info about the father of my pet.",
+		" - info about the mother of my pet.",
+		" - print all direct children of my pet.",
+		" - print all children(descendants) of my pet.",
+		" - print all parents(predecessors) of my pet.",
+		" <age> - print all relatives with the given age.",
+		" - print all relatives with the same fur colour as my pet.",
+		" - how many relatives are in the family tree.",
+		" - print all relatives.",
+		" <int> - set how much info to print. 1 - only names, 2 - extended info.",
+		" - command info.",
+		" - exit the program."
+	};
+
 	std::cout << "All commands:\n";
 	int i = 1;
 	for (const char* cmd : COMMANDS)
 	{
-		std::cout << "\t" << i++ << ".\t" << cmd << '\n';
+		std::cout << "\t" << i++ << ".\t" << cmd << cmdExplanation[i-2] << '\n';
 	}
 }
 
